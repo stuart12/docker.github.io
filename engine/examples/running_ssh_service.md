@@ -70,6 +70,10 @@ If you need to pass`docker run -e ENV=value` values, you need to write a
 short script to do the same before you start `sshd -D` and then replace the
 `CMD` with that script.
 
+In both cases, if `sshd` does not change user,
+then the command run by `sshd` can read the environment variables from `/proc/1/environ`.
+This might be simpler than writing them to a shell initialization file before starting `sshd`.
+
 ## Clean up
 
 Finally, clean up after your test by stopping and removing the
